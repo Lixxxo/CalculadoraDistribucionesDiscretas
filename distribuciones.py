@@ -5,7 +5,6 @@ from math import factorial
 import sys
 
 
-
 def combinatoria(n, x):
     """
     Entrega el valor de la combinatoria entre dos numeros dados
@@ -33,12 +32,16 @@ class Distribucion:
     def varianza(self):
         return self._varianza
 
+    @staticmethod
+    def dict_parametros():
+        return _dict_parametros
+
     def __str__(self):
         return '''
 probabilidad: %s
 esperanza: %s
 varianza: %s
-'''%(str(self._probabilidad), str(self._esperanza), str(self._varianza))
+''' % (str(self._probabilidad), str(self._esperanza), str(self._varianza))
     pass
 
 
@@ -51,11 +54,12 @@ class Dist_binomial(Distribucion):
 
     P(X = x)
     x = 1, 2, 3, ... , n
-    
+
         :x cantidad de éxitos
         :n cantidad de repeticiones
         :p probabilidad de éxito
     '''
+    _dict_parametros = {}
 
     def __init__(self, x, n, p):
 
@@ -63,6 +67,7 @@ class Dist_binomial(Distribucion):
         self._probabilidad = combinatoria(n, x) * (p ** x) * (1 - p) ** (n - x)
         self._esperanza = n * p
         self._varianza = n * p * (1 - p)
+        _dict_parametros = {"x": x, "n": n, "p": p}
         return
 
     pass
@@ -74,14 +79,15 @@ class Dist_binomial_negativa(Distribucion):
     Las repeticiones son independientes la una de la otra 
     la cantidad de éxitos es fija
     La probabilidad es constante
-    
+
     P(X = x)
     x = r, r + 1, r + 2, r + 3 ...
-    
+
         :x cantidad de repeticiones hasta obtener "r" exitos
         :r cantidad de éxitos
         :p probabilidad de éxito
     '''
+    _dict_parametros = {"x": x, "r": r, "p": p}
 
     def __init__(self, x, r, p):
 
@@ -89,6 +95,7 @@ class Dist_binomial_negativa(Distribucion):
         self._probabilidad = combinatoria(x - 1, r - 1)*(p**r)*(1 - p)**(x - r)
         self._esperanza = r/p
         self._varianza = (r * (1 - p)) / (p ** 2)
+
         return
 
     pass
@@ -104,6 +111,8 @@ class Dist_geometrica(Distribucion):
         :x cantidad de repeticiones hasta obtener 1 exito
         :p probabilidad de éxito
     '''
+
+    _dict_parametros = {"x": x, "p": p}
 
     def __init__(self, x, p):
 
@@ -122,7 +131,7 @@ class Dist_hipergeometrica(Distribucion):
     Las repeticiones NO son independientes la una de la otra 
     La cantidad de repeticiones es fija
     Se ocupa para obtener la probabilidad de éxitos en una sub muestra 
-    
+
     P(X = x)
     x = 1, 2, 3 ...
     min {n , k}
@@ -132,6 +141,7 @@ class Dist_hipergeometrica(Distribucion):
         :N tamaño del conjunto grande
         :n tamaño de la muestra
     '''
+    _dict_parametros = {"x": x, "k": k, "N": N, "n": n}
 
     def __init__(self, x, k, N, n):
 
@@ -156,6 +166,7 @@ class Dist_poisson(Distribucion):
         :x cantidad de éxitos en un intervalo o región
         :lamb tasa de ocurrencia 
     """
+    _dict_parametros = {"x": x, "lamb": lamb}
 
     def __init__(self, x, lamb):
 
@@ -167,6 +178,7 @@ class Dist_poisson(Distribucion):
         return
 
     pass
+
 
 distribuciones = {"Binomial": Dist_binomial,
                   "Binomial Negativa": Dist_binomial_negativa,

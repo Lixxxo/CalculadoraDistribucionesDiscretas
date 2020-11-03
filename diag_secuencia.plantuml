@@ -1,0 +1,34 @@
+@startuml diagrama secuencia
+actor Usuario
+
+
+Usuario -> App:inicia
+Usuario -> OptionMenu: selecciona un tipo de distribucion
+OptionMenu-> selector:captura la seleccion del usuario
+selector -> generar_forms:en funcion a la seleccion recibida
+generar_forms -> App:muestra
+Usuario -> App:ingresa las variables
+App -> calcular_prob:onClick()
+calcular_prob -> distiribuciones.Distribucion:Opera y calcula
+distiribuciones.Distribucion->calcular_prob:entrega lso resultados
+calcular_prob->App:muestra el resultado
+
+@enduml
+@startuml diagrama to be
+actor Usuario
+
+
+Usuario -> App:inicia
+Usuario -> OptionMenu: selecciona un tipo de distribucion
+OptionMenu-> selector:captura la seleccion del usuario
+selector->App:Notifica el tipo de distribucion
+App->distiribuciones.Distribucion: inicializa el tipo de distribucion
+selector -> generar_forms:en funcion a la seleccion recibida
+generar_forms -> App:muestra
+Usuario -> App:ingresa las variables
+App -> calcular_prob:onClick()
+calcular_prob -> distiribuciones.Distribucion:Opera y calcula
+distiribuciones.Distribucion->calcular_prob:entrega lso resultados
+calcular_prob->App:muestra el resultado
+
+@enduml
