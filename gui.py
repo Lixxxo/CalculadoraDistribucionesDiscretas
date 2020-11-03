@@ -12,6 +12,8 @@ def generar_option_menu(dictionary):
     return arr
 
 def generar_menu_dist(*args):
+    # app.distrib = distribuciones[selector.get()]()
+    ## for campo in app.distrib.dic_parametros()
     for campo in distribuciones[selector.get()].dict_parametros():
         #agregar una etiqueta
         #agregar un form
@@ -30,7 +32,7 @@ def generar_menu_dist(*args):
 
 app = Tk()
 app.title("Amigo de distribuciones")
-
+app.distrib = None
 selector = StringVar(app)
 selector.set("Selecciona una distibución")
 
