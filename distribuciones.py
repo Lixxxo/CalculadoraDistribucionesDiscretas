@@ -59,18 +59,22 @@ class DistBinomial(Distribucion):
 
     def __init__(self):
         super().__init__()
+        self.__x = None
+        self.__n = None
+        self.__p = None
         return
 
     def iniciar(self, lista):
         """
         Asigna los valores de las variables de la distribución
         """
-        self.x = lista[0]
-        self.n = lista[1]
-        self.p = lista[2]
-        self._probabilidad = combinatoria(self.n, self.x) * (self.p ** self.x) * (1 - self.p) ** (self.n - self.x)
-        self._esperanza = self.n * self.p
-        self._varianza = self.n * self.p * (1 - self.p)
+        self.__x = lista[0]
+        self.__n = lista[1]
+        self.__p = lista[2]
+        self._probabilidad = combinatoria(self.__n, self.__x) * (self.__p ** self.__x) * (1 - self.__p) ** (
+                    self.__n - self.__x)
+        self._esperanza = self.__n * self.__p
+        self._varianza = self.__n * self.__p * (1 - self.__p)
         return
 
     pass
@@ -95,19 +99,22 @@ class DistBinomialNegativa(Distribucion):
 
     def __init__(self):
         super().__init__()
+        self.__x = None
+        self.__r = None
+        self.__p = None
 
     def iniciar(self, lista):
         """
         Asigna los valores de las variables de la distribución
         """
-        self.x = lista[0]
-        self.r = lista[0]
-        self.p = lista[0]
+        self.__x = lista[0]
+        self.__r = lista[1]
+        self.__p = lista[2]
 
-        self._probabilidad = combinatoria(self.x - 1, self.r - 1) * (self.p ** self.r) * (1 - self.p) ** (
-                self.x - self.r)
-        self._esperanza = self.r / self.p
-        self._varianza = (self.r * (1 - self.p)) / (self.p ** 2)
+        self._probabilidad = combinatoria(self.__x - 1, self.__r - 1) * (self.__p ** self.__r) * (1 - self.__p) ** (
+                self.__x - self.__r)
+        self._esperanza = self.__r / self.__p
+        self._varianza = (self.__r * (1 - self.__p)) / (self.__p ** 2)
 
         return
 
@@ -128,18 +135,20 @@ class DistGeometrica(Distribucion):
 
     def __init__(self):
         super().__init__()
+        self.__x = None
+        self.__p = None
         return
 
     def iniciar(self, lista):
         """
         Asigna los valores de las variables de la distribución
         """
-        self.x = lista[0]
-        self.p = lista[1]
+        self.__x = lista[0]
+        self.__p = lista[1]
 
-        self._probabilidad = self.p * (1 - self.p) ** (self.x - 1)
-        self._esperanza = 1 / self.p
-        self._varianza = (1 - self.p) / (self.p ** 2)
+        self._probabilidad = self.__p * (1 - self.__p) ** (self.__x - 1)
+        self._esperanza = 1 / self.__p
+        self._varianza = (1 - self.__p) / (self.__p ** 2)
         return
 
     pass
@@ -165,21 +174,27 @@ class DistHipergeometrica(Distribucion):
 
     def __init__(self):
         super().__init__()
+        self.__x = None
+        self.__k = None
+        self.__N = None
+        self.__n = None
         return
 
     def iniciar(self, lista):
         """
         Asigna los valores de las variables de la distribución
         """
-        self.x = lista[0]
-        self.k = lista[1]
-        self.N = lista[2]
-        self.n = lista[3]
+        self.__x = lista[0]
+        self.__k = lista[1]
+        self.__N = lista[2]
+        self.__n = lista[3]
 
         self._probabilidad = combinatoria(
-            self.k, self.x) * combinatoria(self.N - self.k, self.n - self.x) / combinatoria(self.N, self.n)
-        self._esperanza = self.n * self.k / self.N
-        self._varianza = (self.n * self.k / self.N) * (1 - self.k / self.N) * (self.N - self.n / self.N - 1)
+            self.__k, self.__x) * combinatoria(self.__N - self.__k, self.__n - self.__x) / combinatoria(self.__N,
+                                                                                                        self.__n)
+        self._esperanza = self.__n * self.__k / self.__N
+        self._varianza = (self.__n * self.__k / self.__N) * (1 - self.__k / self.__N) * (
+                    self.__N - self.__n / self.__N - 1)
         return
 
     pass
@@ -198,17 +213,19 @@ class DistPoisson(Distribucion):
 
     def __init__(self):
         super().__init__()
+        self.__x = None
+        self.__lamb = None
         return
 
     def iniciar(self, lista):
         """
         Asigna los valores de las variables de la distribución
         """
-        self.x = lista[0]
-        self.lamb = lista[1]
-        self._probabilidad = ((self.lamb ** self.x) * (e ** (-self.lamb))) / factorial(self.x)
-        self._esperanza = self.lamb
-        self._varianza = self.lamb
+        self.__x = lista[0]
+        self.__lamb = lista[1]
+        self._probabilidad = ((self.__lamb ** self.__x) * (e ** (-self.__lamb))) / factorial(self.__x)
+        self._esperanza = self.__lamb
+        self._varianza = self.__lamb
         return
 
     pass
