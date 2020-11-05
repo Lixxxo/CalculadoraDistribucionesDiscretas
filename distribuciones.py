@@ -23,12 +23,21 @@ class Distribucion:
         return
 
     def probabilidad(self):
+        """
+        Getter de la probabilidad de la distribución
+        """
         return self._probabilidad
 
     def esperanza(self):
+        """
+        Getter de la esperanza de la distribución
+        """
         return self._esperanza
 
     def varianza(self):
+        """
+        Getter de la varianza de la distribución
+        """
         return self._varianza
 
     def __str__(self):
@@ -72,7 +81,7 @@ class DistBinomial(Distribucion):
         self.__n = lista[1]
         self.__p = lista[2]
         self._probabilidad = combinatoria(self.__n, self.__x) * (self.__p ** self.__x) * (1 - self.__p) ** (
-                    self.__n - self.__x)
+                self.__n - self.__x)
         self._esperanza = self.__n * self.__p
         self._varianza = self.__n * self.__p * (1 - self.__p)
         return
@@ -194,7 +203,7 @@ class DistHipergeometrica(Distribucion):
                                                                                                         self.__n)
         self._esperanza = self.__n * self.__k / self.__N
         self._varianza = (self.__n * self.__k / self.__N) * (1 - self.__k / self.__N) * (
-                    self.__N - self.__n / self.__N - 1)
+                self.__N - self.__n / self.__N - 1)
         return
 
     pass
