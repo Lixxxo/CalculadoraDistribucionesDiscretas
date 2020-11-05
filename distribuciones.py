@@ -8,7 +8,7 @@ def combinatoria(n, x):
     """
     Entrega el valor de la combinatoria entre dos numeros dados
     """
-    return factorial(n)/(factorial(x)*factorial(n-x))
+    return factorial(n) / (factorial(x) * factorial(n - x))
 
 
 class Distribucion:
@@ -84,8 +84,8 @@ class DistBinomialNegativa(Distribucion):
 
     def __init__(self, x, r, p):
         super().__init__()
-        self._probabilidad = combinatoria(x - 1, r - 1)*(p**r)*(1 - p)**(x - r)
-        self._esperanza = r/p
+        self._probabilidad = combinatoria(x - 1, r - 1) * (p ** r) * (1 - p) ** (x - r)
+        self._esperanza = r / p
         self._varianza = (r * (1 - p)) / (p ** 2)
 
         return
@@ -134,9 +134,9 @@ class DistHipergeometrica(Distribucion):
     def __init__(self, x, k, N, n):
         super().__init__()
         self._probabilidad = combinatoria(
-            k, x)*combinatoria(N - k, n - x)/combinatoria(N, n)
+            k, x) * combinatoria(N - k, n - x) / combinatoria(N, n)
         self._esperanza = n * k / N
-        self._varianza = (n*k/N)*(1 - k/N)*(N-n/N-1)
+        self._varianza = (n * k / N) * (1 - k / N) * (N - n / N - 1)
         return
 
     pass
