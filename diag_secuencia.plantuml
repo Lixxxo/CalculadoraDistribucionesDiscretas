@@ -28,7 +28,7 @@ generar_forms -> App:muestra
 Usuario -> App:ingresa las variables
 App -> calcular_prob:onClick()
 calcular_prob -> distiribuciones.Distribucion:Opera y calcula
-distiribuciones.Distribucion->calcular_prob:entrega lso resultados
+distiribuciones.Distribucion->calcular_prob:entrega los resultados
 calcular_prob->App:muestra el resultado
 
 @enduml

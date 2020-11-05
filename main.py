@@ -1,7 +1,14 @@
-from distribuciones import *
+from distribuciones import distribuciones
 
 
 
+''''''
 
-a= distribuciones["Binomial"](2,5,0.5)
-print(a)
+sum = 0
+for i in range(5):
+    a = distribuciones["Poisson"](i, 10)
+    sum = sum + a.probabilidad()
+print(1-sum)
+
+p = distribuciones["Binomial"](1,2,.3)
+help(p)

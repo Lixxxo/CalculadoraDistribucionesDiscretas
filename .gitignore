@@ -1,2 +1,12 @@
+# Cache de python
 /__pycache__/
+# Cache de Visual Studio Code
 /.vscode/
+#Cache de PyCharm
+/.idea/
+
+# Entorno virtual
+/venv/
+
+# Archivo de pruebas
+#main.py
