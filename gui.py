@@ -18,6 +18,15 @@ def flush_widgets(frame):
         pass
     pass
 
+def pack_results(app):
+    """
+    Subprograma que actualiza el último resultado dado al usuario
+    """
+    labels = [lb for lb in app.winfo_children() if isinstance(lb, Label)]
+    labels[-1].destroy()
+    label = Label(app, text = app.distrib)
+    label.pack()
+    return
 
 def generar_menu_dist(*args):
     """
@@ -72,13 +81,8 @@ def calcular_distribucion(widgets):
     except :
         pass
     
-    # print(app.distrib)
-
     # obtener todas las labels y eliminar la ultima
-    labels = [lb for lb in app.winfo_children() if isinstance(lb, Label)]
-    labels[-1].destroy()
-    label = Label(app, text = app.distrib)
-    label.pack()
+    pack_results(app)
     pass
 
 
