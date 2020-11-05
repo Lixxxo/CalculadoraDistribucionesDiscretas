@@ -68,10 +68,16 @@ def calcular_distribucion(widgets):
             except ValueError:
                 lista.append(0)
             
+    try:
+        app.distrib.iniciar(lista)
+    except :
+        pass
+    
+    # print(app.distrib)
 
-    app.distrib.iniciar(lista)
-    print(app.distrib)
-
+    # obtener todas las labels y eliminar la ultima
+    labels = [lb for lb in app.winfo_children() if isinstance(lb, Label)]
+    labels[-1].destroy()
     label = Label(app, text = app.distrib)
     label.pack()
     pass
