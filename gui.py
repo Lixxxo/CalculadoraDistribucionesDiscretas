@@ -1,7 +1,7 @@
 """
 Implementación de distribuciones.py para escritorio con interfaz grafica
 """
-from tkinter import *
+from tkinter import Entry, Label, Button, Tk, StringVar, OptionMenu
 
 from distribuciones import distribuciones
 from utils import key_to_list_from_dict
