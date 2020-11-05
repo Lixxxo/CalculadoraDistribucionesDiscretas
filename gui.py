@@ -39,8 +39,18 @@ def generar_menu_dist(*args):
         # vincularlos a la app
         label.pack()
         txtfld.pack()
+    
     button = Button(app, text="Calcular!",command=(lambda e = app.winfo_children(): calcular_distribucion(e)))
+
     button.pack()
+    # texto por defecto para flushear bonito
+    txt = '''
+Probabilidad: -
+Esperanza: -
+Varianza: -
+'''  
+    label = Label(app, text = txt)
+    label.pack()
 
 
 def calcular_distribucion(widgets):
@@ -62,7 +72,6 @@ def calcular_distribucion(widgets):
     app.distrib.iniciar(lista)
     print(app.distrib)
 
-    # set label probabilidad
     label = Label(app, text = app.distrib)
     label.pack()
     pass

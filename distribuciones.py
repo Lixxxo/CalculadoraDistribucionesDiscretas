@@ -117,7 +117,7 @@ class DistGeometrica(Distribucion):
     """
     dict_params = ["x","p"]
 
-    def __init__(self, x, p):
+    def __init__(self):
         super().__init__()
         return
     def iniciar(self,lista):
