@@ -1,6 +1,3 @@
-from distribuciones import distribuciones
-
-
-''''''
-
-
+"""
+Archivo de pruebas de implementación por consola
+"""
