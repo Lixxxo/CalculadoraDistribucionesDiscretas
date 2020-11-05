@@ -64,7 +64,8 @@ class DistBinomial(Distribucion):
         :n cantidad de repeticiones
         :p probabilidad de éxito
     """
-    dict_params = ["x", "n", "p"]
+    dict_params = {"x": "cantidad de éxitos", "n":"cantidad de repeticiones", "p":"probabilidad de éxito"}
+
 
     def __init__(self):
         super().__init__()
@@ -104,7 +105,7 @@ class DistBinomialNegativa(Distribucion):
         :p probabilidad de éxito
     """
 
-    dict_params = ["x", "r", "p"]
+    dict_params = {"x":'cantidad de repeticiones hasta obtener "r" exitos', "r":"cantidad de éxitos", "p":"probabilidad de éxito"}
 
     def __init__(self):
         super().__init__()
@@ -140,7 +141,7 @@ class DistGeometrica(Distribucion):
         :x cantidad de repeticiones hasta obtener 1 exito
         :p probabilidad de éxito
     """
-    dict_params = ["x", "p"]
+    dict_params = {"x":"cantidad de repeticiones hasta obtener 1 exito", "p":"probabilidad de éxito"}
 
     def __init__(self):
         super().__init__()
@@ -179,7 +180,7 @@ class DistHipergeometrica(Distribucion):
         :N tamaño del conjunto grande
         :n tamaño de la muestra
     """
-    dict_params = ["x", "k", "N", "n"]
+    dict_params = {"x":"cantidad de éxitos dentro de la muestra de tamaño n", "k":"cantidad de éxitos en el conjunto grande", "N":"tamaño del conjunto grande", "n":"tamaño de la muestra"}
 
     def __init__(self):
         super().__init__()
@@ -214,11 +215,11 @@ class DistPoisson(Distribucion):
     Distribución de Poisson
     La probabilidad de que ocurra determinada cantidad de 
     sucesos independientes en un periodo de tiempo definido
-    sea X: la cantidad de éxitos
+    sea x: la cantidad de éxitos en un intervalo o región
     sea lamb: el periodo de tiempo definido
     """
 
-    dict_params = ["x", "lamb"]
+    dict_params = {"x":"cantidad de éxitos en un intervalo o región", "lambda":"tasa de ocurrencia"}
 
     def __init__(self):
         super().__init__()
