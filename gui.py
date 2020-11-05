@@ -5,7 +5,6 @@ from tkinter import *
 
 from distribuciones import distribuciones
 from utils import key_to_list_from_dict
-from random import randint
 
 
 def flush_widgets(frame):
@@ -24,18 +23,6 @@ def generar_menu_dist(*args):
     """
     Subprograma que genera los campos correspondientes al tipo de distribución seleccionada por el selector.
     """
-    # distribuciones["Binomial"].init(x,n,p)
-    # distribuciones["Binomial"].probabilidad()
-
-    # distribuciones["Binomial"](x, n, p).probabilidad()
-    # distribuciones[selector].dict_params
-    #cada dist tiene cant != de params
-    #definir una variable comun para esa cant
-    #es variable es len(dict_params) que cada dist tiene
-    #para asignar los campos, lo estamos 
-    # haciendo de forma temporal (usando una instancia)
-    #lo que yo prongo es que usemos las distribuciones de forma estatica
-    # asginando sus params en su clase respectiva
 
     dic = distribuciones[selector.get()].dict_params
     
@@ -52,11 +39,10 @@ def generar_menu_dist(*args):
         # vincularlos a la app
         label.pack()
         txtfld.pack()
-    button = Button(app, text="Calcular!",command=(lambda e=app.winfo_children(): calcular_distribucion(e)))
+    button = Button(app, text="Calcular!",command=(lambda e = app.winfo_children(): calcular_distribucion(e)))
     button.pack()
 
 
-# TODO: corregir apropiadamente el metodo
 def calcular_distribucion(widgets):
     """
     Subprograma (invocado onclick) que captura los
@@ -67,11 +53,18 @@ def calcular_distribucion(widgets):
     lista = []
     for wid in widgets:
         if isinstance(wid, Entry):
-            lista.append(float(wid.get()))
+            try:
+                lista.append(float(wid.get()))
+            except ValueError:
+                lista.append(0)
+            
 
     app.distrib.iniciar(lista)
     print(app.distrib)
+
     # set label probabilidad
+    label = Label(app, text = app.distrib)
+    label.pack()
     pass
 
 
