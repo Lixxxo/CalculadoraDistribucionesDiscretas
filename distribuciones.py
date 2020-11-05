@@ -37,7 +37,7 @@ Probabilidad: %s
 Esperanza: %s
 Varianza: %s
 ''' % (str(self._probabilidad), str(self._esperanza), str(self._varianza))
-    
+
     pass
 
 
@@ -55,13 +55,13 @@ class DistBinomial(Distribucion):
         :n cantidad de repeticiones
         :p probabilidad de éxito
     """
-    dict_params = ["x","n","p"]
+    dict_params = ["x", "n", "p"]
 
     def __init__(self):
         super().__init__()
         return
 
-    def iniciar(self,lista):
+    def iniciar(self, lista):
         self.x = lista[0]
         self.n = lista[1]
         self.p = lista[2]
@@ -69,6 +69,7 @@ class DistBinomial(Distribucion):
         self._esperanza = self.n * self.p
         self._varianza = self.n * self.p * (1 - self.p)
         return
+
     pass
 
 
@@ -86,17 +87,19 @@ class DistBinomialNegativa(Distribucion):
         :r cantidad de éxitos
         :p probabilidad de éxito
     """
-    
-    dict_params = ["x","r","p"]
+
+    dict_params = ["x", "r", "p"]
 
     def __init__(self):
         super().__init__()
-    def iniciar(self,lista):
-        self.x=lista[0]
-        self.r=lista[0]
-        self.p=lista[0]
-        
-        self._probabilidad = combinatoria(self.x - 1, self.r - 1) * (self.p ** self.r) * (1 - self.p) ** (self.x - self.r)
+
+    def iniciar(self, lista):
+        self.x = lista[0]
+        self.r = lista[0]
+        self.p = lista[0]
+
+        self._probabilidad = combinatoria(self.x - 1, self.r - 1) * (self.p ** self.r) * (1 - self.p) ** (
+                self.x - self.r)
         self._esperanza = self.r / self.p
         self._varianza = (self.r * (1 - self.p)) / (self.p ** 2)
 
@@ -115,14 +118,15 @@ class DistGeometrica(Distribucion):
         :x cantidad de repeticiones hasta obtener 1 exito
         :p probabilidad de éxito
     """
-    dict_params = ["x","p"]
+    dict_params = ["x", "p"]
 
     def __init__(self):
         super().__init__()
         return
-    def iniciar(self,lista):
-        self.x=lista[0]
-        self.p=lista[1]
+
+    def iniciar(self, lista):
+        self.x = lista[0]
+        self.p = lista[1]
 
         self._probabilidad = self.p * (1 - self.p) ** (self.x - 1)
         self._esperanza = 1 / self.p
@@ -148,17 +152,18 @@ class DistHipergeometrica(Distribucion):
         :N tamaño del conjunto grande
         :n tamaño de la muestra
     """
-    dict_params = ["x","k","N","n"]
+    dict_params = ["x", "k", "N", "n"]
+
     def __init__(self):
         super().__init__()
         return
-        
+
     def iniciar(self, lista):
         self.x = lista[0]
         self.k = lista[1]
         self.N = lista[2]
         self.n = lista[3]
-        
+
         self._probabilidad = combinatoria(
             self.k, self.x) * combinatoria(self.N - self.k, self.n - self.x) / combinatoria(self.N, self.n)
         self._esperanza = self.n * self.k / self.N
@@ -177,20 +182,19 @@ class DistPoisson(Distribucion):
     sea lamb: el periodo de tiempo definido
     """
 
-    dict_params = ["x","lamb"]
+    dict_params = ["x", "lamb"]
 
     def __init__(self):
         super().__init__()
         return
 
-    def iniciar(self,lista):
+    def iniciar(self, lista):
         self.x = lista[0]
         self.lamb = lista[1]
-        self._probabilidad = ( ( self.lamb ** self.x )*( e**(-self.lamb) ) ) / factorial(self.x)
+        self._probabilidad = ((self.lamb ** self.x) * (e ** (-self.lamb))) / factorial(self.x)
         self._esperanza = self.lamb
         self._varianza = self.lamb
         return
-    
 
     pass
 
