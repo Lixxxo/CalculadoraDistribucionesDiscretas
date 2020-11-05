@@ -157,14 +157,11 @@ class Dist_hipergeometrica(Distribucion):
 
 class Dist_poisson(Distribucion):
     """
-    # TODO: completar con concimiento solido
-    Distribución de poisson, recibe x (numero de ocurrencias) y lambda (intervalo de tiempo entre sucesos)
-
-    P(X = x)
-    x = 0, 1, 2, 3 ...
-
-        :x cantidad de éxitos en un intervalo o región
-        :lamb tasa de ocurrencia 
+    Distribución de Poisson
+    La probabilidad de que ocurra determinada cantidad de 
+    sucesos independientes en un periodo de tiempo definido
+    sea X: la cantidad de éxitos
+    sea lamb: el periodo de tiempo definido
     """
     _dict_parametros = {"x": x, "lamb": lamb}
 
