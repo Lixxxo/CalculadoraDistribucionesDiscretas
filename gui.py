@@ -25,7 +25,6 @@ def generar_menu_dist(*args):
     """
 
     dic = distribuciones[selector.get()].dict_params
-    
 
     # busca los widgets que no se ocupan y los destruye
     flush_widgets(app)
@@ -39,8 +38,8 @@ def generar_menu_dist(*args):
         # vincularlos a la app
         label.pack()
         txtfld.pack()
-    
-    button = Button(app, text="Calcular!",command=(lambda e = app.winfo_children(): calcular_distribucion(e)))
+
+    button = Button(app, text="Calcular!", command=(lambda e=app.winfo_children(): calcular_distribucion(e)))
 
     button.pack()
     # texto por defecto para flushear bonito
@@ -48,8 +47,8 @@ def generar_menu_dist(*args):
 Probabilidad: -
 Esperanza: -
 Varianza: -
-'''  
-    label = Label(app, text = txt)
+'''
+    label = Label(app, text=txt)
     label.pack()
 
 
