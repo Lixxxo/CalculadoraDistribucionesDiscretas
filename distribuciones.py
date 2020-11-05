@@ -62,6 +62,9 @@ class DistBinomial(Distribucion):
         return
 
     def iniciar(self, lista):
+        """
+        Asigna los valores de las variables de la distribución
+        """
         self.x = lista[0]
         self.n = lista[1]
         self.p = lista[2]
@@ -94,6 +97,9 @@ class DistBinomialNegativa(Distribucion):
         super().__init__()
 
     def iniciar(self, lista):
+        """
+        Asigna los valores de las variables de la distribución
+        """
         self.x = lista[0]
         self.r = lista[0]
         self.p = lista[0]
@@ -125,6 +131,9 @@ class DistGeometrica(Distribucion):
         return
 
     def iniciar(self, lista):
+        """
+        Asigna los valores de las variables de la distribución
+        """
         self.x = lista[0]
         self.p = lista[1]
 
@@ -159,6 +168,9 @@ class DistHipergeometrica(Distribucion):
         return
 
     def iniciar(self, lista):
+        """
+        Asigna los valores de las variables de la distribución
+        """
         self.x = lista[0]
         self.k = lista[1]
         self.N = lista[2]
@@ -189,6 +201,9 @@ class DistPoisson(Distribucion):
         return
 
     def iniciar(self, lista):
+        """
+        Asigna los valores de las variables de la distribución
+        """
         self.x = lista[0]
         self.lamb = lista[1]
         self._probabilidad = ((self.lamb ** self.x) * (e ** (-self.lamb))) / factorial(self.x)
