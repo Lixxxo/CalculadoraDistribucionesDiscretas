@@ -5,8 +5,13 @@
 #Cache de PyCharm
 /.idea/
 
+# Builds
+/dist/
+
 # Entorno virtual
 /venv/
+
+
 
 # Archivo de pruebas
 #main.py
