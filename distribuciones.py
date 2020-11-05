@@ -55,13 +55,11 @@ class DistBinomial(Distribucion):
         :n cantidad de repeticiones
         :p probabilidad de éxito
     """
-
-    def __init__(self, x, n, p):
+    def __init__(self,x,n,p):
         super().__init__()
         self._probabilidad = combinatoria(n, x) * (p ** x) * (1 - p) ** (n - x)
         self._esperanza = n * p
         self._varianza = n * p * (1 - p)
-
         return
 
     pass
@@ -151,13 +149,27 @@ class DistPoisson(Distribucion):
     sea lamb: el periodo de tiempo definido
     """
 
-    def __init__(self, x, lamb):
+    dict_params = ["x","lamb"]
+
+    def __init__(self):
         super().__init__()
-        self._probabilidad = ( ( lamb ** x )*( e**(-lamb) ) ) / factorial(x)
-        self._esperanza = lamb
-        self._varianza = lamb
         return
 
+    def iniciar(self,lista):
+        self.x = lista[0]
+        self.lamb = lista[1]
+        self._probabilidad = ( ( self.lamb ** self.x )*( e**(-self.lamb) ) ) / factorial(self.x)
+        self._esperanza = self.lamb
+        self._varianza = self.lamb
+        return
+    
+    def __str__(self):
+        return '''
+probabilidad: %s
+esperanza: %s
+varianza: %s
+''' % (str(self._probabilidad), str(self._esperanza), str(self._varianza))
+    
     pass
 
 

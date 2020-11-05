@@ -24,26 +24,35 @@ def generar_menu_dist(*args):
     """
     Subprograma que genera los campos correspondientes al tipo de distribución seleccionada por el selector.
     """
+    # distribuciones["Binomial"].init(x,n,p)
+    # distribuciones["Binomial"].probabilidad()
 
-    dic = {}
-    c = ("x", "p", "n", "k", "N")
-    n = randint(2, 5)
-    print(n)
-    for i in range(n):
-        dic[c[i]] = i
+    # distribuciones["Binomial"](x, n, p).probabilidad()
+    # distribuciones[selector].dict_params
+    #cada dist tiene cant != de params
+    #definir una variable comun para esa cant
+    #es variable es len(dict_params) que cada dist tiene
+    #para asignar los campos, lo estamos 
+    # haciendo de forma temporal (usando una instancia)
+    #lo que yo prongo es que usemos las distribuciones de forma estatica
+    # asginando sus params en su clase respectiva
+
+    dic = distribuciones[selector.get()].dict_params
+    
 
     # busca los widgets que no se ocupan y los destruye
     flush_widgets(app)
 
     # genera los widgets necesarios de la distribucion
-    for campo in dic.keys():
+    for campo in dic:
         label = Label(app, text=campo)
         # agregar un form
         txtfld = Entry(app, text=campo)
+        txtfld.tag = campo
         # vincularlos a la app
         label.pack()
         txtfld.pack()
-    button = Button(app, text="Calcular!")
+    button = Button(app, text="Calcular!",command=(lambda e=app.winfo_children(): calcular_distribucion(e)))
     button.pack()
 
 
@@ -54,13 +63,14 @@ def calcular_distribucion(widgets):
     valores de los widgets y calcula la probabilidad
     de la distribución seleccionada
     """
-    app.distrib = distribuciones[selector]()
+    app.distrib = distribuciones[selector.get()]()
+    lista = []
     for wid in widgets:
         if isinstance(wid, Entry):
-            # TODO: determinar como un widget se refiere a su parametro
-            # set params
-            pass
-        pass
+            lista.append(float(wid.get()))
+
+    app.distrib.iniciar(lista)
+    print(app.distrib)
     # set label probabilidad
     pass
 
