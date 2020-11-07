@@ -101,7 +101,7 @@ class DistBinomialNegativa(Distribucion):
     x = r, r + 1, r + 2, r + 3 ...
 
         :x cantidad de repeticiones hasta obtener "r" exitos
-        :r cantidad de éxitos
+        this.x, :r cantidad de éxitos
         :p probabilidad de éxito
     """
 
@@ -204,7 +204,7 @@ class DistHipergeometrica(Distribucion):
                                                                                                         self.__n)
         self._esperanza = self.__n * self.__k / self.__N
         self._varianza = (self.__n * self.__k / self.__N) * (1 - self.__k / self.__N) * (
-                self.__N - self.__n / self.__N - 1)
+                (self.__N - self.__n) / (self.__N - 1))
         return
 
     pass
