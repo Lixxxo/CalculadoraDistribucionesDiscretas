@@ -3,7 +3,7 @@
 Para buildear en otro sistema operativo:
 
 - instalar cxfreeze con pip
-```pip install ```
+```pip install cx_Freeze```
 
 - ejecutar el comando
 ```cxfreeze -c gui.py``` 
