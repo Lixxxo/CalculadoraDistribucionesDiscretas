@@ -1,3 +1,9 @@
 # Calculadora de distribuciones discretas
 
-2build invoke: ```$python cxfreeze -c gui.py``` 
+Para buildear en otro sistema operativo:
+
+- instalar cxfreeze con pip
+```pip install ```
+
+- ejecutar el comando
+```cxfreeze -c gui.py``` 
