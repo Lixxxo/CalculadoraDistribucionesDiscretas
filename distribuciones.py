@@ -240,6 +240,23 @@ class DistPoisson(Distribucion):
 
     pass
 
+def calcular_acumulada(dist_discreta, inicio, fin, parametros):
+    """
+    Calcula la distribución acumulada dependiendo de inicio y fin
+
+    params
+    :inicio x inicial desde donde partir a calcular
+    :fin x final hasta donde calcular
+    :parametros parametros de la distribucion (ej, Binomial [n, p])
+    """
+    parametros.insert(0, 0)
+    suma = 0
+    for i in range(inicio, fin + 1):
+        parametros[0] = i
+        dist_discreta.iniciar(parametros)
+        suma += dist_discreta.probabilidad()
+    return suma
+
 
 distribuciones = {"Binomial": DistBinomial,
                   "Binomial Negativa": DistBinomialNegativa,

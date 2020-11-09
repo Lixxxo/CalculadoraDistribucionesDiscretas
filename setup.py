@@ -14,7 +14,7 @@ options = {
 setup(
     name="Calculadora de distribuciones discretas",
     options=options,
-    version="1.0",
-    description='Nopp',
+    version="2.3",
+    description='Calculadora de distribuciones discretas o acumuladas en un rango.',
     executables=executables
 )
